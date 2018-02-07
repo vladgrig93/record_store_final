@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shopping Cart</title>
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                        </button>
+                        <div class="navbar-brand">
+                            <a href="/user/user_portal"><h1>Your Shopping Cart</h1></a>
+                        </div>
+                    </div>
+
+                    <div class="navbar-collapse collapse">
+                        <div class="menu">
+                            <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation"><a href="/user/user_portal" class="active">Home</a></li>
+                            <li role="presentation"><a href="/user/cart">Cart</li>
+                            <li><img src="http://www.clker.com/cliparts/X/U/F/3/N/2/shopping-cart-logo.svg.hi.png" style="width:25px;height:25px;margin-left:-30px;margin-top: -8px;"></a></li>
+                            <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <span class="caret"></span></a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="/user/settings">Account Settings</a></li>
+                                    <li><a href="/logout">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+
+
+    <table class="table" style="color:black;">
+            <thead>
+              <tr>
+                <th>Record</th>
+                <th>Artist</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for recordobj in listofrecords %}
+              <tr>
+                <th scope="row">{{recordobj.record.name}}</th>
+                <td>{{recordobj.record.artist}}</td>
+                <td>$ {{recordobj.record.price}}</td>
+                <td>{{recordobj.quantity}}</td>
+                <td><form method="POST" action="/user/removeitem">
+                    {% csrf_token %}<input type="hidden" value={{recordobj.record.id}} name="record_to_be_deleted"><input type="hidden" value={{recordobj.quantity}} name="record_quantity"><input type="submit" value="X"></form></td>
+              </tr>
+              {% endfor %}
+              <tr>
+                  <th scope="row"></th>
+                  <td></td>
+                  <td></td>
+                  <th scope="row">Total Price: </th>
+                  <td> ${{totalprice}}</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                <form action="/user/processpayment" method="POST">
+                  {%csrf_token %}
+                  <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_szoXRb6XsUpZ6UNnM02ikG4J"
+                  data-amount=Number({{totalprice}})*100
+                  data-name="Stripe.com"
+                  data-description="Widget"
+                  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                  data-locale="auto"
+                  data-zip-code="true">
+                  </script>
+                  <input type="hidden" name="totalprice" value={{totalprice}}>
+                  </form>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+
+         <br>
+
+            <table class="table" style="color:black;">
+                    <thead>
+                      <tr>
+                        <th>Record</th>
+                        <th>Artist</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Date of Purchase</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for recorditem in listorders%}
+                      <tr>
+                        <th scope="row">{{recorditem.record.name}}</th>
+                        <td>{{recorditem.record.artist}}</td>
+                        <td>$ {{recorditem.record.price}}</td>
+                        <td>{{recorditem.quantity}}</td>
+                        <td>{{recorditem.created_at}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+
+<footer>
+        <div class="container">
+          <div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <h4>About Us</h4>
+            <p>We are recordstore.com</p>
+            <div class="contact-info">
+              <ul>
+                <li><i class="fa fa-home fa"></i> 175 E Olive St. Burbank, CA 91502</li>
+                <li><i class="fa fa-phone fa"></i> 747 200 5558</li>
+                <li><i class="fa fa-envelope fa"></i> dojo@dojo.com</li>
+              </ul>
+            </div>
+          </div>
+    
+          <div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="text-center">
+                <img src="{% static 'img/logo.png' %}" alt="">
+
+            </div>
+          </div>
+    
+        </div>
+      </footer>
+</body>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  {% load static %}
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/wow.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'js/jquery.isotope.min.js' %}"></script>
+  <script src="{% static 'js/functions.js' %}"></script>
+</html>

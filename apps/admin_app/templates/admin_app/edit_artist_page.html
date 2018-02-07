@@ -1,0 +1,72 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'admin_app/css/greg_style.css' %}" rel="stylesheet" />
+    <title>Artist Page</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                    </button>
+                <div class="navbar-brand">
+                    <h1>Edit info for {{ artist.name }}</h1>
+                </div>
+            </div>
+    
+                <div class="navbar-collapse collapse">
+                <div class="menu">
+                    <a href="/admin/admin_portal">Admin Home</a>
+                    <a>||</a>
+                    <a href="logout">Logout</a>
+                </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+    </header>
+    <img id="artist_image" src="{{ artist.art_image }}" alt="">
+    <div id="artist_current_info">
+            <h3>Artist name: {{ artist.name }}</h3>
+            <h3>Bio: {{ artist.bio }}</h3>
+            <!-- <h3>Current Records in Stock:</h3> -->
+            
+        </div>
+    <form id="edit_artist_form" action="/admin/update_artist/{{ artist.id }}" method="POST">
+        {% csrf_token %}
+        <table id="edit_artist_table">
+            <p>***** Don't Delete Info Unless You Are Updating *****</p>
+            <tr>
+                <td>Artist Name:</td>
+                <td><input type="text" name="name" value="{{ artist.name }}"></td>
+            </tr>
+            <tr>
+                <td>Bio:</td>
+                <td><input type="text" name="bio" value="{{ artist.bio }}"></td>
+            </tr>
+            <tr>
+                <td>Image:</td>
+                <td><input type="text" name="image" value="{{ artist.art_image }}"></td>
+            </tr>
+        </table>
+        <input id="update_artist_button" type="submit" value="Update Artist">
+    </form>
+</body>
+</html>

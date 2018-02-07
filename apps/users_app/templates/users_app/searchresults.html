@@ -1,0 +1,32 @@
+<div style="display: inline-block;">
+    {% if not norecord %}
+    <h3 class="center" style="padding-top:20px;width:1100px;">{{header1}} </h3>
+    {% endif %}
+
+    {% for record in records %}
+        <div class="productlistitem" style="height: 200px;width: 300px;display: inline-block;margin-left: 20px;">
+            <a href="record/{{record.id}}"> <img src={{record.rec_image}}  style="width: 300px;height: auto;margin:0px;display:inline-block;"></a>
+            <div class="nameartist" style="display: inline-block;margin-left: 20px;">
+                <h4><a href="record/{{record.id}}">{{record.name}}</a></h4>
+                <h5>{{record.artist}}</h5>
+            </div>
+            <p> Description: {{record.description}}</p>
+        </div>
+    {% endfor %}
+
+    {% if not noartist %}
+    <h3 class="center" style="padding-top:20px"> {{header2}} </h3>
+    {% endif %}
+
+    '
+'
+    {% for artist in artists %}
+        <div style="width: 300px;display:inline-block;vertical-align:top;margin-left:70px;">
+            <a href="artist/{{artist.id}}"><img src={{artist.art_image}} style="width: 300px;height: auto; margin:0px;display:inline-block;"></a>
+            <div class="nameartist" style="display: inline-block;margin-left: 20px;">
+                <h4><a href="artist/{{artist.id}}">{{artist.name}}</a></h4>
+            </div>
+            <p> Bio: {{artist.bio}}</p>
+        </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <!-- Bootstrap -->
+      {% load static %}
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                    </button>
+                <div class="navbar-brand">
+                    <a href="/user/user_portal"><h1>The Record Shoppe</h1></a>
+                </div>
+                </div>
+    
+                <div class="navbar-collapse collapse">
+                <div class="menu">
+                    <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"><a href="/user/user_portal" class="active">Home</a></li>
+                    <li role="presentation"><a href="/user/viewcart">{{request.session.first_name}}'s Cart</li>
+                    <li><img src="http://www.clker.com/cliparts/X/U/F/3/N/2/shopping-cart-logo.svg.hi.png" style="width:25px;height:25px;margin-left:-30px;margin-top: -8px;"></a></li>
+                    <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                {% if request.session.admin == 1 %}
+                                <li><a href="/admin/admin_portal">Admin Portal</a></li>
+                                {% endif %}
+                                <li><a href="/user/settings">Account Settings</a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                          </li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="home">
+            <div class="slider">
+              <div class="">
+                <div id="about-slider">
+                  <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators visible-xs">
+                      <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+                      <li data-target="#carousel-slider" data-slide-to="1"></li>
+                      <li data-target="#carousel-slider" data-slide-to="2"></li>
+                    </ol>
+        
+                    <div class="carousel-inner">
+                      <div class="item active">
+                          {% load static %}
+                        <img src="{% static 'img/sliderimg1.jpg' %}" class="img-responsive" alt="">
+                      </div>
+                      <div class="item">
+                        <img src="{% static 'img/sliderimg2.jpg' %}" class="img-responsive" alt="">
+                      </div>
+                      <div class="item">
+                        <img src="{% static 'img/sliderimg3.jpg' %}" class="img-responsive" alt="">
+                      </div>
+                    </div>
+        
+                    <a class="left carousel-control hidden-xs" href="#carousel-slider" data-slide="prev">
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+        
+                    <a class=" right carousel-control hidden-xs" href="#carousel-slider" data-slide="next">
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                  </div>
+                  <!--/#carousel-slider-->
+                </div>
+                <!--/#about-slider-->
+              </div>
+            </div>
+          </div>
+        
+    <section id="search">
+    <div class="container">
+        <div class="center">
+            <div class="col-md-6 col-md-offset-3">
+            <h2>Search For Music</h2>
+            <hr>
+            <form action="/user/search" method="POST">
+                {% csrf_token %}
+                <input type="text" name="search" id="searchbar">
+            </form>
+            </div>
+
+
+                <div id="displaysearchresults">
+
+                </div>
+
+
+        </div>
+    </div>
+    </div>
+</section>
+
+    <div id="recordselection">
+        <div class="container">
+            <div class="center">
+            <div class="col-md-6 col-md-offset-3">
+                <h2>Record Selection</h2>
+                <hr>
+            </div>
+            </div>
+        </div>
+        
+        <div class="container" style="overflow:scroll; height: 1000px;">
+            {%for artist in artists %}
+            <div class="productlistitem" style="height: 400px;width: 300px;display: inline-block;margin-left: 60px;">
+                <a href="record/{{artist.record.id}}"><img src={{artist.record.rec_image}} style="width: 300px;height: auto;margin:0px;display:inline-block;"></a>
+                <div id="titleauthor" style="display: inline-block;margin-left: 20px;">
+                    <h4 style=""><a href="record/{{artist.record.id}}">{{artist.record.name}}</a></h4>
+                    <h5><a href="artist/{{artist.id}}">{{artist.name}}</a></h5>
+                    <h5><a href="category/{{artist.record.genre}}">{{artist.record.genre}}</h5>
+                </div>
+                    <p> {{artist.record.description}}</p>
+            </div>
+            {% endfor %}
+            <!--<div class="productlistitem" style="height: 400px;width: 300px;display: inline-block;margin-left: 60px;">
+                <img src="https://spark.adobe.com/images/landing/examples/design-music-album-cover.jpg" style="width: 100px;height: auto;margin:0px;display:inline-block;">
+                <div style="display: inline-block;margin-left: 20px;">
+                    <h4 style="">Album Title</h4>
+                    <h5>Album Artist</h5>
+                </div>
+                <p> Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class="productlistitem" style="height: 200px;width: 300px;display: inline-block;margin-left: 60px;">
+                <img src="https://spark.adobe.com/images/landing/examples/design-music-album-cover.jpg" style="width: 100px;height: auto;margin:0px;display:inline-block;">
+                <div style="display: inline-block;margin-left: 20px;">
+                    <h4 style="">Album Title</h4>
+                    <h5>Album Artist</h5>
+                </div>
+                <p> Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>-->
+
+
+
+                                     <!--<div class="col-sm-3 col-md-offset-3">
+                                        <div class="center">
+                                                <h4>Categories</h4>
+                                                <form action="category" method="POST">
+                                                {%csrf_token%}
+                                                <select name='genre' style="width: 200px">
+                                                    {% for category in artists %}
+                                                    <option value="{{category.record.genre}}">{{category.record.genre}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                <input type="submit" value="Go">
+                                                </form>
+                                            </div>
+                                        </div>-->
+                                    <!--<div class="col-sm-3">
+                                        <div class="center">
+                                            <h4>Artists</h4>
+                                            <form action="" method="POST">
+                                            {%csrf_token%}
+                                            <select style="width:200px">
+                                                
+                                                <option value="1">Tupac</option>
+                                                <option value="2">Red Hot Chilli Peppers</option>
+                                                <option value="3">Zhu</option>
+                                                <option value="4">Greg Friedlander</option>
+                                                <option value="5">Michael Topmiller</option>
+                                            </select>
+                                            <input type="submit" value="Go">
+                                            </form>
+                                        </div>-->
+                                    <!--</div>
+                                </div> -->
+        </div>
+
+                <!-- 
+
+                    <div class="recordlist">
+                        <h3>Selection of Records we offer</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Record</th>
+                                    <th>Artist</th>
+                                    <th>Genre</th>
+                                    <th>Price</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--add jinja loop here-->
+                                <!-- <tr>
+                                    <td><a href="">{record.name}</a></td>    
+                                    <td><a href="">{record.artist}</a></td>   
+                                    <td><a href="">{record.genre}</a></td>    
+                                    <td>{record.price}</td>   
+                                    <td>{record.description}</td>   
+                                    <td><a href="">Add to Cart</a></td>   
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> -->
+    </div>
+
+    <footer>
+            <div class="container">
+              <div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <h4>About Us</h4>
+                <p>We are recordstore.com</p>
+                <div class="contact-info">
+                  <ul>
+                    <li><i class="fa fa-home fa"></i> 175 E Olive St. Burbank, CA 91502</li>
+                    <li><i class="fa fa-phone fa"></i> 747 200 5558</li>
+                    <li><i class="fa fa-envelope fa"></i> dojo@dojo.com</li>
+                  </ul>
+                </div>
+              </div>
+        
+              <div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <div class="text-center">
+                  <img src="{% static 'img/logo.png' %}" alt="">
+
+                </div>
+              </div>
+        
+            </div>
+          </footer>
+        
+</body>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  {% load static %}
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/wow.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'js/jquery.isotope.min.js' %}"></script>
+  <script src="{% static 'js/functions.js' %}"></script>
+  <script>
+        $('#searchbar').keyup(function(){
+            $.ajax({
+                url: '/user/search',
+                method: 'post',
+                data: $(this).parent().serialize(),
+                success: function(serverResponse){
+                    $('#displaysearchresults').html(serverResponse)
+                }
+            });
+        });
+    </script>
+</html>

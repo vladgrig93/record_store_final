@@ -1,0 +1,85 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'admin_app/css/greg_style.css' %}" rel="stylesheet" />
+    <title>Record Page</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                    </button>
+                <div class="navbar-brand">
+                    <h1>Edit info for {{ record.name }}</h1>
+                </div>
+            </div>
+    
+                <div class="navbar-collapse collapse">
+                <div class="menu">
+                    <a href="/admin/admin_portal">Admin Home</a>
+                    <a>||</a>
+                    <a href="logout">Logout</a>
+                </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+    </header>
+    <img id="record_image" src="{{ record.rec_image }}" alt="">
+    <div id="record_current_info">
+        <h3>Record name: {{ record.name }}</h3>
+        <h3>Artist: {{ record.artist }}</h3>
+        <h3>Genre: {{ record.genre }}</h3>
+        <h3>Description: {{ record.description }}</h3>
+        <h3>Price: ${{ record.price }}.00</h3>
+    </div>
+    <form id="edit_record_form" action="/admin/update_record/{{ record.id }}" method="POST">
+        {% csrf_token %}
+        <table id="edit_record_table">
+            <p>***** Don't Delete Info Unless You Are Updating *****</p>
+            <tr>
+                <td>Record Name:</td>
+                <td><input type="text" name="name" value="{{ record.name }}"></td>
+            </tr>
+            <tr>
+                <td>Artist Name:</td>
+                <td><input type="text" name="artist_name" value="{{ record.artist }}"></td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td><input type="text" name="description" value="{{ record.description }}"></td>
+            </tr>
+            <tr>
+                <td>Genre:</td>
+                <td><input type="text" name="genre" value="{{ record.genre }}"></td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td><input type="text" name="price" value="{{ record.price }}"></td>
+            </tr>
+            <tr>
+                <td>Image:</td>
+                <td><input type="text" name="image" value="{{ record.rec_image }}"></td>
+            </tr>
+        </table>
+        <input id="update_record_button" type="submit" value="Update Record">
+    </form>
+</body>
+</html>

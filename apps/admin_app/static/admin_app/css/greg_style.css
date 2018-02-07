@@ -1,0 +1,297 @@
+#user_table {
+    color: black;
+    width: 250px; 
+    border: 1px solid black;
+}
+
+#user_table th {
+    text-align: left;
+    background-color: #D8AD6F;
+    color: black;
+}
+
+#user_table td, #user_table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#user_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#user_table tr:hover {
+    background-color: #ddd;
+}
+
+#record_table {
+    color: black;
+    width: 500px; 
+    border: 1px solid black;
+}
+
+#record_table th {
+    text-align: left;
+    background-color: #D8AD6F;
+    color: black;
+}
+
+#record_table td, #record_table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#record_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#record_table tr:hover {
+    background-color: #ddd;
+}
+
+#artist_table {
+    color: black;
+    width: 200px; 
+    border: 1px solid black;
+}
+
+#artist_table th {
+    text-align: left;
+    background-color: #D8AD6F;
+    color: black;
+}
+
+#artist_table td, #artist_table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#artist_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#artist_table tr:hover {
+    background-color: #ddd;
+}
+
+#user_profile {
+    margin-top: 100px;
+    margin-left: 20px;
+}
+
+#user_profile_table {
+    color: black;
+    width: 400px; 
+    border: 1px solid black;
+}
+
+#user_profile_table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#user_profile tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#user_update_button {
+    margin-top: 25px;
+    background-color: #D8AD6F;
+    color: black;
+    border-radius: 10px;
+    border-style: 1px;
+}
+
+#user_table_div {
+    margin-left: 20px;
+}
+
+#record_table_div {
+    margin-left: 20px;
+}
+
+#artist_table_div {
+    margin-left: 20px;
+}
+
+#order_table_div {
+    margin-left: 20px;
+    margin-bottom: 50px;
+}
+
+#edit_record_form {
+    margin-top: 50px;
+    margin-left: 25px;
+}
+
+#edit_record_table {
+    color: black;
+    width: 400px; 
+    border: 1px solid black;
+}
+
+#edit_record_table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#edit_record_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#record_image {
+    width: 400px;
+    height: 400px;
+    margin-top: 70px;
+    margin-left: 20px;
+}
+
+#update_record_button {
+    margin-top: 15px;
+    background-color: #D8AD6F;
+    color: black;
+    border-radius: 10px;
+    border-style: 1px;
+}
+
+#add_record_button {
+    margin-top: 15px;
+    background-color: #D8AD6F;
+    color: black;
+    border-radius: 10px;
+    border-style: 1px;
+}
+
+#record_current_info {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 70px;
+    margin-left: 25px;
+}
+
+#edit_artist_form {
+    margin-top: 50px;
+    margin-left: 25px;
+}
+
+#edit_artist_table {
+    color: black;
+    width: 400px; 
+    border: 1px solid black;
+}
+
+#edit_artist_table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#edit_artist_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#update_artist_button {
+    margin-top: 15px;
+    background-color: #D8AD6F;
+    color: black;
+    border-radius: 10px;
+    border-style: 1px;
+}
+
+#artist_image {
+    width: 400px;
+    height: 400px;
+    margin-top: 70px;
+    margin-left: 20px;
+}
+
+#artist_current_info {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 70px;
+    margin-left: 25px;
+}
+
+#add_record_form {
+    margin-top: 100px;
+    margin-left: 25px;
+}
+
+#add_record_table {
+    color: black;
+    width: 400px; 
+    border: 1px solid black;
+}
+
+#add_record_table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#add_record_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#add_record_button {
+    margin-top: 15px;
+    background-color: #D8AD6F;
+    color: black;
+    border-radius: 10px;
+    border-style: 1px;
+}
+
+#order_table {
+    color: black;
+    width: 300px; 
+    border: 1px solid black;
+}
+
+#order_table th {
+    text-align: left;
+    background-color: #D8AD6F;
+    color: black;
+}
+
+#order_table td, #order_table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#order_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#order_table tr:hover {
+    background-color: #ddd;
+}
+
+#edit_order_form {
+    margin-top: 100px;
+    margin-left: 25px;
+}
+
+#edit_order_table {
+    color: black;
+    width: 400px; 
+    border: 1px solid black;
+}
+
+#edit_order_table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#edit_artist_table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#update_order_button {
+    margin-top: 15px;
+    background-color: #D8AD6F;
+    color: black;
+    border-radius: 10px;
+    border-style: 1px;
+}
+
+#items_in_order_div {
+    margin-left: 20px;
+    margin-top: 25px;
+}

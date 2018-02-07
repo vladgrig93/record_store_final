@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta id="youtubeid" data-alt="{{youtube}}">
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <title>Record</title>
+    <script>
+            var videoID;
+           
+            $.get(
+                    "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q={{record.artist}}{{record.name}}&type=video&key=AIzaSyD1p01u8hMTqxtWZMMrNdH0jbO153a4fRg",
+                    function(data){
+                        console.log(data);
+                        videoID = (data['items'][0]['id']['videoId']);
+
+                            });
+            $(document).ready(function(){
+                
+    
+    
+                        
+                        });
+        </script>
+</head>
+<body>
+        <header>
+                <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                    <div class="navigation">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                            </button>
+                        <div class="navbar-brand">
+                            <a href="/user/user_portal"><h1>The Record Shoppe</h1></a>
+                        </div>
+                        </div>
+            
+                        <div class="navbar-collapse collapse">
+                        <div class="menu">
+                            <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation"><a href="/user/user_portal" class="active">Home</a></li>
+                            <li role="presentation"><a href="/user/viewcart">Cart</li>
+                            <li><img src="http://www.clker.com/cliparts/X/U/F/3/N/2/shopping-cart-logo.svg.hi.png" style="width:25px;height:25px;margin-left:-30px;margin-top: -8px;"></a></li>
+                            <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <span class="caret"></span></a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="/user/settings">Account Settings</a></li>
+                                        <li><a href="/logout">Logout</a></li>
+                                    </ul>
+                                    </li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+                      
+
+    
+    <div style= "padding: 100px; display: inline-block;">
+        <h1 style="color: black;">{{record.name}}</h1>
+        <h4><a href="/user/artist/{{record.id}}">{{record.artist}}</a></h4>
+        <h1><img src={{record.rec_image}} style="width: 400px;"></h1>
+    </div>
+    <div style="display: inline-block;">
+        <p>About: <h4>{{record.description}}</h4></p>       
+        <p>Genre:<a href="/user/category/{{record.genre}}"><h4>{{record.genre}}</h4></a></p>       
+        <p>Price:<h4>${{record.price}}</h4></p>  
+        <form method="post" action="/user/addrecord" style="padding-top:10px;">
+            {% csrf_token %}
+                <p style="color:black;">Quantity:</p>
+            <select name="quantity" style="color:black">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select><br>
+            <input type="hidden" value={{record.id}} name="recordid">
+            <input type="submit" value="Add to Cart" style="color: black; margin-top: 20px;">
+            </form>  
+    </div> 
+<div id="youtubeplayer" style="margin-left: 300px;margin-bottom:30px;">
+
+
+    <div id="player"></div>
+
+    </div>
+    
+<script>
+                               
+</script>
+
+    <footer>
+            <div class="container">
+                <div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <h4>About Us</h4>
+                <p>We are recordstore.com</p>
+                <div class="contact-info">
+                    <ul>
+                    <li><i class="fa fa-home fa"></i> 175 E Olive St. Burbank, CA 91502</li>
+                    <li><i class="fa fa-phone fa"></i> 747 200 5558</li>
+                    <li><i class="fa fa-envelope fa"></i> dojo@dojo.com</li>
+                    </ul>
+                </div>
+                </div>
+        
+                <div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <div class="text-center">
+                    <img src="{% static 'img/logo.png' %}" alt="">
+    
+                </div>
+                </div>
+        
+            </div>
+
+        </footer>
+
+<script>
+                         // 2. This code loads the IFrame Player API code asynchronously.
+                         var tag = document.createElement('script');
+                            tag.src = "https://www.youtube.com/iframe_api";
+                            var firstScriptTag = document.getElementsByTagName('script')[0];
+                            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                            // 3. This function creates an <iframe> (and YouTube player)
+                            //    after the API code downloads.
+                            var player;
+                            console.log("***********************")
+                            console.log(videoID)
+                            function onYouTubeIframeAPIReady() {
+                                player = new YT.Player('player', {
+                                height: '300',
+                                width: '580',
+                                videoId: $('#youtubeid').attr("data-alt"),
+                                events: {
+                                    'onReady': onPlayerReady,
+                                    'onStateChange': onPlayerStateChange
+                                }
+                                });
+                            }
+                        
+                            // 4. The API will call this function when the video player is ready.
+                            function onPlayerReady(event) {
+                                event.target.playVideo();
+                            }
+                        
+                            // 5. The API calls this function when the player's state changes.
+                            //    The function indicates that when playing a video (state=1),
+                            //    the player should play for six seconds and then stop.
+                            var done = false;
+                            function onPlayerStateChange(event) {
+                                if (event.data == YT.PlayerState.PLAYING && !done) {
+                                setTimeout(stopVideo, 6000);
+                                done = true;
+                                }
+                            }
+                            function stopVideo() {
+                                player.stopVideo();
+                            }
+</script>
+</body>
+
+
+{% load static %}
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/jquery.easing.min.js' %}"></script>
+<script src="{% static 'js/jquery.isotope.min.js' %}"></script>
+<script src="{% static 'js/functions.js' %}"></script>
+
+
+
+</html>

@@ -1,0 +1,96 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'admin_app/css/greg_style.css' %}" rel="stylesheet" />
+    <title>Add Record</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                    </button>
+                <div class="navbar-brand">
+                    <h1>Add Record</h1>
+                </div>
+            </div>
+    
+                <div class="navbar-collapse collapse">
+                <div class="menu">
+                    <a href="/admin/admin_portal">Admin Home</a>
+                    <a>||</a>
+                    <a href="logout">Logout</a>
+                </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+    </header>
+    <form id="add_record_form" action="/admin/proccess_record" method="POST">
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif%}
+        <table id="add_record_table">
+            <tr>
+                <td>Record Title:</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td>Artist*:</td>
+                <td>*Choose from 'Artists in Database' or 'Add New' below</td>
+            </tr>
+            <tr>
+                <td>Artists in database:</td>
+                <td>
+                    <select name="artist_list">
+                        {% for artist in artists %}
+                        <option value="{{ artist.name }}">{{ artist.name }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+                <td>Add New Artist:</td>
+                <td><input type="text" name="artist_name"></td>
+            <tr>
+                <td>Genre:</td>
+                <td><input type="text" name="genre"></td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td><input type="text" name="price"></td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td><input type="text" name="description"></td>
+            </tr>
+            <tr>
+                <td>Image File (optional):</td>
+                <td><input type="text" name="image" value="n/a"></td>
+            </tr>
+            <!-- <tr>
+                <td><button type="submit">Submit Record</button></td>
+            </tr> -->
+        </table>
+        <button id="add_record_button" type="submit">Submit Record</button>
+    </form>
+</body>
+</html>

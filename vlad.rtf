@@ -1,0 +1,195 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AndaleMono;}
+{\colortbl;\red255\green255\blue255;\red47\green255\blue18;\red0\green0\blue0;\red47\green180\blue29;
+\red180\green36\blue25;}
+{\*\expandedcolortbl;;\cssrgb\c15686\c99608\c7843;\csgray\c0\c90000;\cssrgb\c20239\c73899\c14948;
+\cssrgb\c76410\c21699\c12524;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Vlad Test\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1 \cf2 \cb3 \CocoaLigature0 (djangoEnv) Vladimirs-MacBook-Air:desktop Vlad$ git clone https://github.com/vladgrig93/musicstore.git\
+Cloning into 'musicstore'...\
+remote: Counting objects: 75, done.\
+remote: Compressing objects: 100% (42/42), done.\
+remote: Total 75 (delta 21), reused 75 (delta 21), pack-reused 0\
+Unpacking objects: 100% (75/75), done.\
+(djangoEnv) Vladimirs-MacBook-Air:desktop Vlad$ cd musicstore\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git branch\
+* \cf4 master\cf2 \
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git checkout -b vlad_branch\
+Switched to a new branch 'vlad_branch'\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git status\
+On branch vlad_branch\
+nothing to commit, working tree clean\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git branch\
+  master\
+* \cf4 vlad_branch\cf2 \
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git status\
+On branch vlad_branch\
+Untracked files:\
+  (use "git add <file>..." to include in what will be committed)\
+\
+	\cf5 .DS_Store\cf2 \
+	\cf5 vlad.rtf\cf2 \
+\
+nothing added to commit but untracked files present (use "git add" to track)\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git add .\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git commit -m"testing my branch"\
+[vlad_branch 3acc6f8] testing my branch\
+ 2 files changed, 8 insertions(+)\
+ create mode 100644 .DS_Store\
+ create mode 100644 vlad.rtf\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git push origin vlad_branch\
+Counting objects: 4, done.\
+Delta compression using up to 4 threads.\
+Compressing objects: 100% (4/4), done.\
+Writing objects: 100% (4/4), 759 bytes | 0 bytes/s, done.\
+Total 4 (delta 1), reused 0 (delta 0)\
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.\
+To https://github.com/vladgrig93/musicstore.git\
+ * [new branch]      vlad_branch -> vlad_branch\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ \
+\
+git status\
+On branch master\
+Your branch is behind 'origin/master' by 3 commits, and can be fast-forwarded.\
+  (use "git pull" to update your local branch)\
+Changes not staged for commit:\
+  (use "git add <file>..." to update what will be committed)\
+  (use "git checkout -- <file>..." to discard changes in working directory)\
+\
+	\cf5 modified:   apps/__init__.pyc\cf2 \
+	\cf5 modified:   apps/admin_app/__init__.pyc\cf2 \
+	\cf5 modified:   apps/admin_app/admin.pyc\cf2 \
+	\cf5 modified:   apps/admin_app/migrations/__init__.pyc\cf2 \
+	\cf5 modified:   apps/admin_app/models.pyc\cf2 \
+	\cf5 modified:   apps/admin_app/urls.pyc\cf2 \
+	\cf5 modified:   apps/admin_app/views.pyc\cf2 \
+	\cf5 modified:   apps/login_app/__init__.pyc\cf2 \
+	\cf5 modified:   apps/login_app/admin.pyc\cf2 \
+	\cf5 modified:   apps/login_app/migrations/0001_initial.pyc\cf2 \
+	\cf5 modified:   apps/login_app/migrations/0002_auto_20171024_2110.pyc\cf2 \
+	\cf5 modified:   apps/login_app/migrations/0003_auto_20171024_2210.pyc\cf2 \
+	\cf5 modified:   apps/login_app/migrations/__init__.pyc\cf2 \
+	\cf5 modified:   apps/login_app/models.pyc\cf2 \
+	\cf5 modified:   apps/login_app/urls.pyc\cf2 \
+	\cf5 modified:   apps/login_app/views.pyc\cf2 \
+	\cf5 modified:   apps/users_app/__init__.pyc\cf2 \
+	\cf5 modified:   apps/users_app/admin.pyc\cf2 \
+	\cf5 modified:   apps/users_app/migrations/__init__.pyc\cf2 \
+	\cf5 modified:   apps/users_app/models.pyc\cf2 \
+	\cf5 modified:   apps/users_app/urls.pyc\cf2 \
+	\cf5 modified:   apps/users_app/views.pyc\cf2 \
+	\cf5 modified:   db.sqlite3\cf2 \
+	\cf5 modified:   musicstore/__init__.pyc\cf2 \
+	\cf5 modified:   musicstore/settings.pyc\cf2 \
+	\cf5 modified:   musicstore/urls.pyc\cf2 \
+	\cf5 modified:   musicstore/wsgi.pyc\cf2 \
+\
+no changes added to commit (use "git add" and/or "git commit -a")\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git pull origin master\
+From https://github.com/vladgrig93/musicstore\
+ * branch            master     -> FETCH_HEAD\
+Updating 2a856f7..2aa1990\
+Fast-forward\
+ .DS_Store                | Bin \cf5 0\cf2  -> \cf4 6148\cf2  bytes\
+ apps/.DS_Store           | Bin \cf5 0\cf2  -> \cf4 6148\cf2  bytes\
+ apps/login_app/models.py |   7 \cf4 ++++\cf5 ---\cf2 \
+ vlad.rtf                 |  55 \cf4 +++++++++++++++++++++++++++++++++++++++++++++++++++++++\cf2 \
+ 4 files changed, 59 insertions(+), 3 deletions(-)\
+ create mode 100644 .DS_Store\
+ create mode 100644 apps/.DS_Store\
+ create mode 100644 vlad.rtf\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git status\
+On branch master\
+Your branch is up-to-date with 'origin/master'.\
+Changes not staged for commit:\
+  (use "git add <file>..." to update what will be committed)\
+  (use "git checkout -- <file>..." to discard changes in working directory)\
+Rebase\
+\
+musicstore Vlad$ git checkout vlad_branch\
+Switched to branch 'vlad_branch'\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git rebase master\
+First, rewinding head to replay your work on top of it...\
+Applying: updated artists, categories, user portal page\
+Using index info to reconstruct a base tree...\
+M	apps/users_app/templates/users_app/user_portal.html\
+.git/rebase-apply/patch:60: trailing whitespace.\
+    <h3>\{\{display.bio\}\}</h3>  \
+.git/rebase-apply/patch:94: trailing whitespace.\
+                <td><a href="">\{\{record.name\}\}</a></td>    \
+.git/rebase-apply/patch:95: trailing whitespace.\
+                <td><a href="">\{\{record.artist\}\}</a></td>   \
+.git/rebase-apply/patch:96: trailing whitespace.\
+                <td>$ \{\{record.price\}\}</td>   \
+.git/rebase-apply/patch:97: trailing whitespace.\
+                <td>\{\{record.description\}\}</td>   \
+warning: squelched 6 whitespace errors\
+warning: 11 lines add whitespace errors.\
+Falling back to patching base and 3-way merge...\
+Auto-merging apps/users_app/templates/users_app/user_portal.html\
+CONFLICT (content): Merge conflict in apps/users_app/templates/users_app/user_portal.html\
+error: Failed to merge in the changes.\
+Patch failed at 0001 updated artists, categories, user portal page\
+The copy of the patch that failed is found in: .git/rebase-apply/patch\
+\
+When you have resolved this problem, run "git rebase --continue".\
+If you prefer to skip this patch, run "git rebase --skip" instead.\
+To check out the original branch and stop rebasing, run "git rebase --abort".\
+\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git rebase --continue\
+apps/users_app/templates/users_app/user_portal.html: needs merge\
+You must edit all merge conflicts and then\
+mark them as resolved using git add\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git rebase --continue\
+apps/users_app/templates/users_app/user_portal.html: needs merge\
+You must edit all merge conflicts and then\
+mark them as resolved using git add\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git status\
+\cf5 rebase in progress; onto \cf2 017603b\
+You are currently rebasing branch 'vlad_branch' on '017603b'.\
+  (fix conflicts and then run "git rebase --continue")\
+  (use "git rebase --skip" to skip this patch)\
+  (use "git rebase --abort" to check out the original branch)\
+\
+Changes to be committed:\
+  (use "git reset HEAD <file>..." to unstage)\
+\
+	\cf4 new file:   apps/login_app/migrations/0005_auto_20171025_2007.py\cf2 \
+	\cf4 modified:   apps/users_app/templates/users_app/artist.html\cf2 \
+	\cf4 modified:   apps/users_app/templates/users_app/categories.html\cf2 \
+	\cf4 modified:   apps/users_app/urls.py\cf2 \
+	\cf4 modified:   apps/users_app/views.py\cf2 \
+\
+Unmerged paths:\
+  (use "git reset HEAD <file>..." to unstage)\
+  (use "git add <file>..." to mark resolution)\
+\
+	\cf5 both modified:   apps/users_app/templates/users_app/user_portal.html\cf2 \
+\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git add user_portal.html\
+fatal: pathspec 'user_portal.html' did not match any files\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git add apps/users_app/templates/users_app/user_portal.html\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git rebase --continue\
+Applying: updated artists, categories, user portal page\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git branch\
+  master\
+* \cf4 vlad_branch\cf2 \
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git status\
+On branch vlad_branch\
+nothing to commit, working tree clean\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ git push origin vlad_branch\
+Counting objects: 13, done.\
+Delta compression using up to 4 threads.\
+Compressing objects: 100% (12/12), done.\
+Writing objects: 100% (13/13), 2.38 KiB | 0 bytes/s, done.\
+Total 13 (delta 8), reused 0 (delta 0)\
+remote: Resolving deltas: 100% (8/8), completed with 8 local objects.\
+To https://github.com/vladgrig93/music_store.git\
+ * [new branch]      vlad_branch -> vlad_branch\
+(djangoEnv) Vladimirs-MacBook-Air:musicstore Vlad$ python manage.py ru}
